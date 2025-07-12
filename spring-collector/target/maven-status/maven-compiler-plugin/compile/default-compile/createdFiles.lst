@@ -1,0 +1,5 @@
+com/example/timestamp/model/Timestamp.class
+com/example/timestamp/repository/TimestampRepository.class
+com/example/timestamp/service/TimestampService.class
+com/example/timestamp/controller/TimestampController.class
+com/example/timestamp/SpringCollectorApplication.class

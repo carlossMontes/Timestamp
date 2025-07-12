@@ -1,0 +1,17 @@
+services:
+  timestamp-service:
+    build: ./timestamp-service
+    container_name: timestamp-service
+    volumes:
+      - ./timestamp-service/data:/data
+    restart: unless-stopped
+
+  spring-collector:
+    build: ./spring-collector
+    container_name: spring-collector
+    volumes:
+      - ./timestamp-service/data:/data
+    ports:
+      - "8080:8080"
+    depends_on:
+      - timestamp-service

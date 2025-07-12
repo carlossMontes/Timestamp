@@ -1,7 +1,0 @@
-services:
-  timestamp-service:
-    build: .
-    container_name: timestamp-service
-    volumes:
-      - ./data:/data          # Montaje para persistir el .db
-    restart: unless-stopped

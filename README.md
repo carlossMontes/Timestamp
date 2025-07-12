@@ -3,48 +3,91 @@ Servicio Dockerizado en Python que guarda un timestamp cada minuto en una base S
 
 # ⏱️ Timestamp Service
 
-Servicio en Python que guarda automáticamente marcas de tiempo (UTC) en una base de datos SQLite cada minuto. Este contenedor es el primer módulo de un sistema que permitirá la gestión de microservicios desde una interfaz web usando Spring Boot.
-
----
+Sistema modular que registra y gestiona marcas de tiempo, compuesto por un servicio Python para la recolección de datos y una API REST en Spring Boot para su consulta.
 
 ## 🚀 Características
 
-- Inserta timestamps automáticamente cada 60 segundos
-- Base de datos persistente en SQLite
-- Contenedorizado con Docker para fácil encendido/apagado
-- Datos disponibles para consulta y visualización externa
+- **Servicio de Recolección (Python)**
+  - Inserta timestamps UTC automáticamente cada 60 segundos
+  - Base de datos persistente en SQLite
+  - Contenedorizado con Docker
+  - Funcionamiento autónomo en segundo plano
 
----
-
----
+- **API REST (Spring Boot)**
+  - Endpoints para consulta de timestamps
+  - Arquitectura en capas (Controller-Service-Repository)
+  - Acceso a la misma base de datos SQLite
+  - Documentación JavaDoc completa
 
 ## 🛠 Requisitos
 
-- Docker
-- Docker Compose
-- Python (sólo si se prueba fuera del contenedor)
+- Docker y Docker Compose
+- Java 17+ (para desarrollo de la API)
+- Python 3.x (para desarrollo del servicio)
 
----
+## 🏗️ Estructura del Proyecto
 
-## 🧑‍💻 Cómo usar
+```
+timestamp/
+├── spring-collector/      # API REST en Spring Boot
+│   └── src/              # Código fuente de la API
+├── timestamp-service/     # Servicio Python
+│   └── app/              # Código fuente del recolector
+└── data/                 # Volumen persistente para SQLite
+```
 
-### 1. Construir la imagen
+## 🧑‍💻 Instrucciones de Uso
 
+### 1. Construir los servicios
 ```bash
 docker compose build
 ```
 
-### 2. Levantar el servicio en segundo plano
+### 2. Levantar todo el sistema
 ```bash
 docker compose up -d
 ```
 
-### 3. Ver registros en tiempo real
+### 3. Monitorear los servicios
+
+Ver logs del servicio Python:
 ```bash
 docker compose logs -f timestamp-service
 ```
 
-### 4. Apagar el servicio
+Ver logs de la API Spring:
+```bash
+docker compose logs -f spring-api
+```
+
+### 4. Usar la API REST
+
+- Listar todos los timestamps:
+  ```
+  GET http://localhost:8080/timestamps
+  ```
+
+### 5. Detener los servicios
 ```bash
 docker compose down
 ```
+
+## 📝 Notas Técnicas
+
+- La base de datos SQLite se almacena en `/data/timestamps.db`
+- El servicio Python registra timestamps cada minuto en UTC
+- La API Spring Boot expone los datos en formato JSON
+- Ambos servicios comparten la misma base de datos
+
+## 🔄 Flujo de Datos
+
+1. El servicio Python registra timestamps automáticamente
+2. Los datos se almacenan en SQLite
+3. La API Spring Boot permite consultar estos registros
+4. Los clientes pueden acceder a los datos vía HTTP
+
+## 🛡️ Consideraciones
+
+- Los servicios están configurados para reinicio automático
+- Los datos persisten entre reinicios gracias al volumen Docker
+- Zona horaria UTC para consistencia temporal
