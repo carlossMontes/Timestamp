@@ -1,0 +1,54 @@
+### Java / Spring Boot ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### Base de datos SQLite ###
+/data/*.db
+*.db-journal
+
+### Archivos de IDE ###
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+*.code-workspace
+
+### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+### Entornos Virtuales ###
+.env
+.venv
+env/
+venv/
+ENV/
+
+### Logs ###
+*.log
+logs/
+
+### Sistema Operativo ###
+.DS_Store
+Thumbs.db
