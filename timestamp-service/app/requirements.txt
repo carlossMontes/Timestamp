@@ -1,0 +1,1 @@
+# Sólo SQLite viene con Python, no hay dependencias externas por ahora.
