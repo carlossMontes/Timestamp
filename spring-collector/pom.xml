@@ -44,6 +44,13 @@
             <artifactId>hibernate-community-dialects</artifactId>
             <version>6.4.4.Final</version>
         </dependency>
+
+        <!-- Spring Boot Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

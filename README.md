@@ -67,6 +67,17 @@ docker compose logs -f spring-api
   GET http://localhost:8080/timestamps
   ```
 
+### 4. Acceder a la interfaz web
+
+Visitar en el navegador:
+```
+http://localhost:8080
+```
+
+La interfaz web muestra:
+- Lista de todos los timestamps registrados
+- Actualización automática de la página cada minuto
+
 ### 5. Detener los servicios
 ```bash
 docker compose down

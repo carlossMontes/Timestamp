@@ -3,10 +3,38 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### Maven ###
+.mvn/timing.properties
+buildNumber.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
 
 ### Base de datos SQLite ###
 /data/*.db
 *.db-journal
+*.sqlite
+*.sqlite3
 
 ### Archivos de IDE ###
 .idea/
@@ -15,6 +43,10 @@ target/
 *.ipr
 .vscode/
 *.code-workspace
+*.sublime-workspace
+*.sublime-project
+nbproject/
+nb-configuration.xml
 
 ### Python ###
 __pycache__/
@@ -37,6 +69,9 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.pytest_cache/
+.coverage
+htmlcov/
 
 ### Entornos Virtuales ###
 .env
@@ -44,11 +79,22 @@ wheels/
 env/
 venv/
 ENV/
+.python-version
 
 ### Logs ###
 *.log
 logs/
+log/
 
 ### Sistema Operativo ###
 .DS_Store
 Thumbs.db
+.directory
+*.swp
+*.swo
+*~
+.nfs*
+
+### Docker ###
+.docker/
+docker-compose.override.yml
